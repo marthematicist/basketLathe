@@ -68,7 +68,7 @@ var drawSpace = function( p ) {
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
-		versionText = '0.021';
+		versionText = '0.022';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
@@ -80,6 +80,18 @@ var drawSpace = function( p ) {
 	};
 	p.draw = function() {
 		p.background( 156 );
+		// draw outer circle
+		p.stroke( 255 );
+		p.strokeWeight( 5 );
+		p.noFill();
+		p.ellipse( 0.5*pixelDim , 0.5* pixelDim , pixelDim , pixelDim );
+		// draw concentric circles
+		p.stroke( 255 );
+		p.strokeWeight( 1 );
+		p.noFill();
+		for( i = 1 ; i < 10 ; i++ ) {
+			p.ellipse( 0.5*pixelDim , 0.5*pixelDim , i/10*pixelDim , i/10*pixelDim );
+		}
 		// draw circles
 		p.stroke( 0 );
 		p.strokeWeight( 1 );
@@ -99,11 +111,7 @@ var drawSpace = function( p ) {
 		// draw ellipse under mouse
 		p.fill( 85 , 85 , 255 );
 		p.ellipse( p.mouseX , p.mouseY , d , d );
-		// draw outer circle
-		p.stroke( 255 );
-		p.strokeWeight( 5 );
-		p.noFill();
-		p.ellipse( 0.5*pixelDim , 0.5* pixelDim , pixelDim , pixelDim );
+		
 		// if waiting, display instructions
 		if( blState === 'WAITING' ) {
 			p.noStroke();
