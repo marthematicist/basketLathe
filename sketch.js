@@ -62,7 +62,7 @@ var drawSpace = function( p ) {
 		// Page variables
 		blState = 'WAITING';
 		takingRotInput = false;
-		rotVal = 200;
+		rotVal = 0.5*pixelDim;
 		// Timing variables
 		// time marker
 		t = p.millis();		
