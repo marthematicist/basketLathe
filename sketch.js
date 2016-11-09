@@ -84,6 +84,7 @@ var drawSpace = function( p ) {
 		p.stroke( 0 );
 		p.strokeWeight( 1 );
 		p.fill( 255 );
+		var d = 0.03*pixelDim;
 		for( n = 0 ; n < setNumPaths/2 ; n++ ) {
 			var angle = 4*p.PI*n / setNumPaths;
 			var x = p.mouseX - 0.5*pixelDim;
@@ -92,10 +93,12 @@ var drawSpace = function( p ) {
 			var y1 = x*p.sin(angle) + y*p.cos(angle);
 			var x2 = -x1;
 			var y2 = y1;
-			var d = 0.03*pixelDim;
 			p.ellipse( x1 + 0.5*pixelDim , y1 + 0.5*pixelDim , d , d );
 			p.ellipse( x2 + 0.5*pixelDim , y2 + 0.5*pixelDim , d , d );
 		}
+		// draw ellipse under mouse
+		p.fill( 85 , 85 , 255 );
+		p.ellipse( p.mouseX , p.mouseY , d , d );
 		// draw outer circle
 		p.stroke( 255 );
 		p.strokeWeight( 5 );
