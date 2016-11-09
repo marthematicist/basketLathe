@@ -68,7 +68,7 @@ var drawSpace = function( p ) {
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
-		versionText = '0.02';
+		versionText = '0.03';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
@@ -202,7 +202,7 @@ var renderSpace = function( p ) {
 		// set viewpoint
 		p.translate( 0 , 0 , -0.9*pixelDim );
 		if( takingRotInput && p.mouseY>=0 && p.mouseY<=pixelDim && p.mouseX>=0 && p.mouseX<=pixelDim ) {
-			rotVal = -0.5*p.PI + ( p.mouseY - 0.5*pixelDim)  * 0.002;
+			rotVal = -0.5*p.PI + ( p.mouseY - 0.5*pixelDim)  * 0.0025;
 		}
 		p.rotateX( rotVal );
 		p.rotateZ( p.millis() * 0.0003 ); 
