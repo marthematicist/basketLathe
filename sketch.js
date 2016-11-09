@@ -193,7 +193,7 @@ var renderSpace = function( p ) {
 		p.background( 220 );
 		// set viewpoint
 		p.translate( 0 , 0 , -0.9*pixelDim );
-		if( takingRotInput ) {
+		if( takingRotInput && p.mouseY >=0 && p.mouseY <= pixelDim ) {
 			rotVal = -0.5*p.PI + ( p.mouseY - 0.5*pixelDim)  * 0.002;
 		}
 		p.rotateX( rotVal );
