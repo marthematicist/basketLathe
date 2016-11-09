@@ -73,6 +73,7 @@ var drawSpace = function( p ) {
 		dsCanvas = p.createCanvas( pixelDim , pixelDim );
 		dsCanvas.position( 0 , 0 );
 		dsCanvas.mousePressed( startRecording );
+		dsCanvas.mouseOut( stopRotInput );
 	};
 	p.draw = function() {
 		p.background( 156 );
@@ -123,6 +124,9 @@ var drawSpace = function( p ) {
 		}
 		blState = 'RECORDING';
 		console.log( "recording..." );
+	};
+	stopRotInput = function() {
+		takingRotInput = false;
 	};
 	
 	// Basket object
@@ -175,14 +179,14 @@ var dS = new p5( drawSpace , 'canvas2' );
 
 var renderSpace = function( p ) {
 	p.setup = function() {
-		dsCanvas = p.createCanvas( pixelDim , pixelDim , p.WEBGL );
+		rsCanvas = p.createCanvas( pixelDim , pixelDim , p.WEBGL );
 		if( p.windowWidth > p.windowHeight ) {
-			dsCanvas.position( pixelDim + gapPixels , 0 );
+			rsCanvas.position( pixelDim + gapPixels , 0 );
 		} else {
-			dsCanvas.position( 0 , pixelDim + gapPixels );
+			rsCanvas.position( 0 , pixelDim + gapPixels );
 		}
-		dsCanvas.mouseOver( startRotInput );
-		dsCanvas.mouseOut( stopRotInput );
+		rsCanvas.mouseOver( startRotInput );
+		rsCanvas.mouseOut( stopRotInput );
 		p.background( 220 );
 	};
 	p.draw = function() {
