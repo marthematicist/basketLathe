@@ -68,7 +68,7 @@ var drawSpace = function( p ) {
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
-		versionText = '0.022';
+		versionText = '0.023';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
@@ -91,6 +91,17 @@ var drawSpace = function( p ) {
 		p.noFill();
 		for( i = 1 ; i < 10 ; i++ ) {
 			p.ellipse( 0.5*pixelDim , 0.5*pixelDim , i/10*pixelDim , i/10*pixelDim );
+		}
+		// draw radii
+		p.stroke( 255 );
+		p.strokeWeight( 1 );
+		p.noFill();
+		for( i = 0 ; i < setNumPaths ; i++ ) {
+			var angle = p.PI*2*i/setNumPaths;
+			p.line( 0.5*pixelDim , 
+			       0.5*pixelDim , 
+			       (0.5 + 0.5*p.sin(angle))*pixelDim , 
+			       (0.5 + p.cos(angle))*pixelDim );
 		}
 		// draw circles
 		p.stroke( 0 );
