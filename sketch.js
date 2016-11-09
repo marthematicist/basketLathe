@@ -68,7 +68,7 @@ var drawSpace = function( p ) {
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
-		versionText = '0.03';
+		versionText = '0.04';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
