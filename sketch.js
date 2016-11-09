@@ -62,13 +62,13 @@ var drawSpace = function( p ) {
 		// Page variables
 		blState = 'WAITING';
 		takingRotInput = false;
-		rotVal = 0.5*pixelDim;
+		rotVal = -0.5*p.PI ;
 		// Timing variables
 		// time marker
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
-		versionText = '0.04';
+		versionText = '0.021';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
