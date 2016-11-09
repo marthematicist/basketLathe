@@ -107,9 +107,9 @@ var drawSpace = function( p ) {
 			p.fill( 64 , 64 , 255 );
 			p.textAlign( p.CENTER , p.TOP );
 			p.textSize( 0.04*pixelDim );
-			p.text( "BASKET LATHE\n-mathematicist-", 0.5*pixelDim , 0.4*pixelDim );
+			p.text( "BASKET LATHE\n-mathematicist-", 0.5*pixelDim , 0.35*pixelDim );
 			p.textSize( 0.03*pixelDim );
-			p.text( "Click once on this canvas to begin building...\nv" + versionText , 0.5*pixelDim , 0.5*pixelDim );
+			p.text( "Click once on this canvas to begin building...\nv" + versionText , 0.5*pixelDim , 0.55*pixelDim );
 		}
 		
 		// store vertices in Basket B if recording and dt has elapsed
