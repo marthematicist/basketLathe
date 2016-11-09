@@ -101,7 +101,7 @@ var drawSpace = function( p ) {
 			p.line( 0.5*pixelDim , 
 			       0.5*pixelDim , 
 			       (0.5 + 0.5*p.sin(angle))*pixelDim , 
-			       (0.5 + p.cos(angle))*pixelDim );
+			       (0.5 + 0.5*p.cos(angle))*pixelDim );
 		}
 		// draw circles
 		p.stroke( 0 );
