@@ -63,8 +63,10 @@ var drawSpace = function( p ) {
 		dsCanvas.mousePressed( startRecording );
 	};
 	p.draw = function() {
-		p.background( 128 );
+		p.background( 156 );
 		// draw circles
+		p.stroke( 0 );
+		p.strokeWeight( 1 );
 		p.fill( 255 );
 		for( n = 0 ; n < setNumPaths/2 ; n++ ) {
 			var angle = 4*p.PI*n / setNumPaths;
@@ -78,11 +80,18 @@ var drawSpace = function( p ) {
 			p.ellipse( x1 + 0.5*pixelDim , y1 + 0.5*pixelDim , d , d );
 			p.ellipse( x2 + 0.5*pixelDim , y2 + 0.5*pixelDim , d , d );
 		}
+		// draw outer circle
+		p.stroke( 255 );
+		p.strokeWeight( 5 );
+		p.noFill();
+		p.ellipse( 0.5*pixelDim , 0.5* pixelDim , pixelDim , pixelDim );
 		// if waiting, display instructions
 		if( blState === 'WAITING' ) {
+			p.noStroke();
+			p.fill( 64 , 64 , 255 );
 			p.textSize( 0.03*pixelDim );
 			p.textAlign( p.CENTER , p.TOP );
-			p.text( "Click once on this canvas to begin building..." , 0.5*pixelDim , 0.01*pixelDim );
+			p.text( "Click once on this canvas to begin building..." , 0.5*pixelDim , 0.5*pixelDim );
 		}
 		
 		// store vertices in Basket B if recording and dt has elapsed
