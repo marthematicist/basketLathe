@@ -13,6 +13,7 @@ var spaceDim;		// extent of model space (assumes in mm)
 var pixelDim;		// extent of screen space (in pixels)
 var pixelToSpace;	// conversion const: pixel * pixeltoSpace = space
 var spaceToPixel;	// conversion const: space * spaceToPixel = pixel
+var gapPixels;
 // Basket parameters and instance
 var setNumVert;		// number of vertives in each path
 var setNumPaths;	// number of paths (must be even)
@@ -33,7 +34,18 @@ var drawSpace = function( p ) {
 		// extent of model space (assumes in mm)
 		spaceDim = 150;
 		// extent of screen space (in pixels)
-		pixelDim = 0.4*( p.windowWidth - 100 );	
+		gapPixels = 10;
+		if( p.windowWidth > p.windowHeight ) {
+			pixelDim = p.windowHeight;
+			if( gapPixels + 2*pixelDim > p.windowWidth ) {
+				pixelDim = 0.5*( p.windowWidth - gapPixels );
+			}
+		} else {
+			pixelDim = p.windowWidth;
+			if( gapPixels + 2*pixelDim > p.windowHeight ) {
+				pixelDim = 0.5*( p.windowHeight - gapPixels );
+			}
+		}
 		// conversion const: pixel * pixeltoSpace = space
 		pixelToSpace = spaceDim / pixelDim;
 		// conversion const: space * spaceToPixel = pixel
@@ -164,7 +176,11 @@ var dS = new p5( drawSpace , 'canvas2' );
 var renderSpace = function( p ) {
 	p.setup = function() {
 		dsCanvas = p.createCanvas( pixelDim , pixelDim , p.WEBGL );
-		dsCanvas.position( pixelDim + 10 , 0 );
+		if( p.windowWidth > p.windowHeight ) {
+			dsCanvas.position( pixelDim + gapPixels , 0 );
+		} else {
+			dsCanvas.position( 0 , pixelDim + gapPixels );
+		}
 		dsCanvas.mouseOver( startRotInput );
 		dsCanvas.mouseOut( stopRotInput );
 		p.background( 220 );
