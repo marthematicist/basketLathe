@@ -25,6 +25,8 @@ var rotVal;
 // Timing variables
 var t;				// time marker
 var dt;				// time between adding vertices (milliseconds)
+// text vor version number
+var versionText;
 
 
 // p5 INSTANCE: drawSpace
@@ -66,6 +68,7 @@ var drawSpace = function( p ) {
 		t = p.millis();		
 		// time between adding vertices (milliseconds)	
 		dt = 50;
+		versionText = '0.02';
 	};
 	p.setup = function() {
 		setUpGlobalVariables();
@@ -102,9 +105,11 @@ var drawSpace = function( p ) {
 		if( blState === 'WAITING' ) {
 			p.noStroke();
 			p.fill( 64 , 64 , 255 );
-			p.textSize( 0.03*pixelDim );
 			p.textAlign( p.CENTER , p.TOP );
-			p.text( "Click once on this canvas to begin building...\nv0.01" , 0.5*pixelDim , 0.5*pixelDim );
+			p.textSize( 0.04*pixelDim );
+			p.text( "BASKET LATHE\n-mathematicist-", 0.5*pixelDim , 0.4*pixelDim );
+			p.textSize( 0.03*pixelDim );
+			p.text( "Click once on this canvas to begin building...\nv" + versionText , 0.5*pixelDim , 0.5*pixelDim );
 		}
 		
 		// store vertices in Basket B if recording and dt has elapsed
