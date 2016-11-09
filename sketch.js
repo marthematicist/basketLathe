@@ -104,7 +104,7 @@ var drawSpace = function( p ) {
 			p.fill( 64 , 64 , 255 );
 			p.textSize( 0.03*pixelDim );
 			p.textAlign( p.CENTER , p.TOP );
-			p.text( "Click once on this canvas to begin building..." , 0.5*pixelDim , 0.5*pixelDim );
+			p.text( "Click once on this canvas to begin building...\nv0.01" , 0.5*pixelDim , 0.5*pixelDim );
 		}
 		
 		// store vertices in Basket B if recording and dt has elapsed
