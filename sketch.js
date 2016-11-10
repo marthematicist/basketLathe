@@ -501,7 +501,7 @@ var renderSpace = function( p ) {
 		*/
 		// write out end of file
 		p.append( fileText , "endsolid basketLathe\n" );
-		p.save( fileText , 'test' , 'stl' );
+		p.save( fileText , 'basketLathe' , 'stl' );
 	}
 }
 var rS = new p5( renderSpace , 'canvas2' );
