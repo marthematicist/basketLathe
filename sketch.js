@@ -82,7 +82,7 @@ var drawSpace = function( p ) {
 		// time between adding vertices (milliseconds)	
 		dt = 50;
 		// version text
-		versionText = '0.12';
+		versionText = '0.13';
 		// 3D printing variables
 		// max angle of path
 		maxAngle = p.PI/180 * 40;
@@ -310,7 +310,7 @@ var renderSpace = function( p ) {
 		p.background( 220 );
 		// set viewpoint
 		p.translate( 0 , 0 , -0.9*pixelDim );
-		if( takingRotInput && p.mouseY>=0 && p.mouseY<=pixelDim && p.mouseX>=0 && p.mouseX<=pixelDim ) {
+		if( takingRotInput && p.mouseY>=0 && p.mouseY<=pixelDim && p.mouseX>=0 && p.mouseX<=pixelDim && bwState === 'WAITING' ) {
 			rotVal = -0.5*p.PI + ( p.mouseY - 0.5*pixelDim)  * 0.0025;
 		} else {
 			rotVal = -0.5*p.PI;
