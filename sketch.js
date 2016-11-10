@@ -33,6 +33,8 @@ var fileSTL;			// array of strings
 var basketComplete;		// is the basket complete?
 var radialWidth;
 var tangentWidth;
+var baseHeight;			// heights of base/top
+var topHeight;
 // cursor controls
 var cPos;				// position of cursor (p5.Vector) relative to center
 var maxCursorRadius;  	// max cursor distance from center
@@ -45,7 +47,7 @@ var drawSpace = function( p ) {
 	function setUpGlobalVariables() {
 		// Dimensions
 		// extent of model space (assumes in mm)
-		spaceDim = 10;
+		spaceDim = 100;
 		// extent of screen space (in pixels)
 		gapPixels = 10;
 		if( p.windowWidth > p.windowHeight ) {
@@ -89,12 +91,12 @@ var drawSpace = function( p ) {
 		// has a basket been completed?
 		basketComplete = false;
 		// width of path (radial)
-		radialWidth = .3;
+		radialWidth = 4;
 		// width of path (tangent)
-		tangentWidth = .3;
+		tangentWidth = 4;
 		// heights of base/top
-		baseHeight = .5;
-		topHeight = .5;
+		baseHeight = 5;
+		topHeight = 5;
 		// cursor controls
 		// position of cursor (p5.Vector) relative to center
 		cPos = p.createVector( p.mouseX , p.mouseY );		
@@ -109,7 +111,11 @@ var drawSpace = function( p ) {
 		setUpGlobalVariables();
 		// create and position drawing canvas
 		dsCanvas = p.createCanvas( pixelDim , pixelDim );
-		dsCanvas.position( 0 , 0 );
+		if( p.windowWidth > p.windowHeight ) {
+			dsCanvas.position( 0 , 0 );
+		} else {
+			dsCanvas.position( 0 , pixelDim + gapPixels );
+		}
 		dsCanvas.mousePressed( startRecording );
 		dsCanvas.mouseOut( stopRotInput );
 	};
@@ -264,8 +270,11 @@ var drawSpace = function( p ) {
 						x*p.sin(angle) + y*p.cos(angle) ,
 						z );
 					var vPixel2 = p.createVector( -vPixel1.x , vPixel1.y , vPixel1.z );
+					var vertOffset = p.createVector( 0 , 0 , 0.5*spaceDim + baseHeight );
 					var vSpace1 = p5.Vector.mult( vPixel1 , pixelToSpace );
+					vSpace1.add( vertOffset );
 					var vSpace2 = p5.Vector.mult( vPixel2 , pixelToSpace );
+					vSpace2.add( vertOffset );
 					this.pixelVert[2*n].push( vPixel1 );
 					this.pixelVert[2*n+1].push( vPixel2 );
 					this.spaceVert[2*n].push( vSpace1 );
@@ -291,7 +300,7 @@ var renderSpace = function( p ) {
 		if( p.windowWidth > p.windowHeight ) {
 			rsCanvas.position( pixelDim + gapPixels , 0 );
 		} else {
-			rsCanvas.position( 0 , pixelDim + gapPixels );
+			rsCanvas.position( 0 , 0 );
 		}
 		rsCanvas.mouseOver( startRotInput );
 		rsCanvas.mouseOut( stopRotInput );
@@ -476,14 +485,14 @@ var renderSpace = function( p ) {
 			outputQuadSTL( v0 , v1 , v2 , v3 , fileText );
 		}
 		// write out base
-		var c = p.createVector( 0 , 0 , -0.5*spaceDim - 0.5*baseHeight );
+		var c = p.createVector( 0 , 0 , 0.5*baseHeight );
 		var h = baseHeight;
 		var radial = p.createVector( B.spaceVert[0][0].x , B.spaceVert[0][0].y , 0 );
 		var r2 = radial.mag();
 		var n = 100;
 		outputDisc( c , h , r2 , n  , fileText )
 		// write out rim
-		c = p.createVector( 0 , 0 , 0.5*spaceDim + 0.5*baseHeight );
+		c = p.createVector( 0 , 0 , baseHeight + spaceDim + 0.5*topHeight );
 		radial = p.createVector( B.spaceVert[0][B.numVert-1].x , B.spaceVert[0][B.numVert-1].y , 0 );
 		r2 = radial.mag();
 		var r1 = r2 - rw;
