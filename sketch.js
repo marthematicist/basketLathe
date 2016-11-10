@@ -312,6 +312,8 @@ var renderSpace = function( p ) {
 		p.translate( 0 , 0 , -0.9*pixelDim );
 		if( takingRotInput && p.mouseY>=0 && p.mouseY<=pixelDim && p.mouseX>=0 && p.mouseX<=pixelDim ) {
 			rotVal = -0.5*p.PI + ( p.mouseY - 0.5*pixelDim)  * 0.0025;
+		} else {
+			rotVal = -0.5*p.PI;
 		}
 		p.rotateX( rotVal );
 		p.rotateZ( p.millis() * 0.0003 ); 
