@@ -82,7 +82,7 @@ var drawSpace = function( p ) {
 		// time between adding vertices (milliseconds)	
 		dt = 50;
 		// version text
-		versionText = '0.15';
+		versionText = '0.16';
 		// 3D printing variables
 		// max angle of path
 		maxAngle = p.PI/180 * 40;
@@ -124,8 +124,10 @@ var drawSpace = function( p ) {
 		// if waiting
 		if( blState === 'WAITING' ) {
 			// update the cursor position
-			var mPos = p.createVector( p.mouseX - 0.5*pixelDim , p.mouseY - 0.5*pixelDim );
-			cPos = p.createVector(mPos.x , mPos.y );
+			if( p.mouseY>=0 && p.mouseY<=pixelDim && p.mouseX>=0 && p.mouseX<=pixelDim ) {
+				var mPos = p.createVector( p.mouseX - 0.5*pixelDim , p.mouseY - 0.5*pixelDim );
+				cPos = p.createVector(mPos.x , mPos.y );
+			}
 			if( cPos.mag() > maxCursorRadius ) {
 				cPos.normalize().mult( maxCursorRadius );
 			}
