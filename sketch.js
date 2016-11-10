@@ -82,7 +82,7 @@ var drawSpace = function( p ) {
 		// time between adding vertices (milliseconds)	
 		dt = 50;
 		// version text
-		versionText = '0.13';
+		versionText = '0.14';
 		// 3D printing variables
 		// max angle of path
 		maxAngle = p.PI/180 * 40;
