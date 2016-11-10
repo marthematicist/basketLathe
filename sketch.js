@@ -82,7 +82,7 @@ var drawSpace = function( p ) {
 		// time between adding vertices (milliseconds)	
 		dt = 50;
 		// version text
-		versionText = '0.14';
+		versionText = '0.15';
 		// 3D printing variables
 		// max angle of path
 		maxAngle = p.PI/180 * 40;
@@ -99,7 +99,7 @@ var drawSpace = function( p ) {
 		topHeight = 5;
 		// cursor controls
 		// position of cursor (p5.Vector) relative to center
-		cPos = p.createVector( p.mouseX , p.mouseY );		
+		cPos = p.createVector( 0.75*pixelDim , 0.5*pixelDim );		
 		// max cursor distance from center
 		maxCursorRadius = 0.5*pixelDim;
 		// min cursor distance from center
