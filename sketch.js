@@ -492,11 +492,13 @@ var renderSpace = function( p ) {
 		var n = 100;
 		outputDisc( c , h , r2 , n  , fileText )
 		// write out rim
+		/*
 		c = p.createVector( 0 , 0 , baseHeight + spaceDim + 0.5*topHeight );
 		radial = p.createVector( B.spaceVert[0][B.numVert-1].x , B.spaceVert[0][B.numVert-1].y , 0 );
 		r2 = radial.mag();
 		var r1 = r2 - rw;
 		outputWasher( c , h , r1 , r2 , n  , fileText )
+		*/
 		// write out end of file
 		p.append( fileText , "endsolid basketLathe\n" );
 		p.save( fileText , 'test' , 'stl' );
