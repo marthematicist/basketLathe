@@ -1,6 +1,6 @@
 /*
 	* BasketLathe
-	* by mathematicist
+	* by marthematicist
 	* 2016
 	* 
 	* shape a basket using mouse as it builds vertically
