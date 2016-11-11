@@ -82,7 +82,7 @@ var drawSpace = function( p ) {
 		// time between adding vertices (milliseconds)	
 		dt = 50;
 		// version text
-		versionText = '0.16';
+		versionText = '0.17';
 		// 3D printing variables
 		// max angle of path
 		maxAngle = p.PI/180 * 40;
@@ -143,7 +143,7 @@ var drawSpace = function( p ) {
 			p.stroke( 0 );
 			p.textAlign( p.CENTER , p.TOP );
 			p.textSize( 0.04*pixelDim );
-			p.text( "BASKET LATHE\n-mathematicist-", 0.5*pixelDim , 0.35*pixelDim );
+			p.text( "BASKET LATHE\n-marthematicist-", 0.5*pixelDim , 0.35*pixelDim );
 			p.textSize( 0.03*pixelDim );
 			p.text( "Click once on this canvas to begin building...\nv" + versionText , 0.5*pixelDim , 0.55*pixelDim );
 			if( basketComplete ) {
