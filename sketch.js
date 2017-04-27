@@ -67,7 +67,7 @@ var drawSpace = function( p ) {
 		spaceToPixel = pixelDim / spaceDim;	
 		// Basket parameters and instance
 		// number of paths (must be even)
-		setNumPaths = 30;
+		setNumPaths = 20;
 		// number of vertives in each path
 		setNumVert = 200;		
 		// instance of Basket object	
